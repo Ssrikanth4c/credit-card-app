@@ -21,7 +21,7 @@ class InputBox extends React.Component{
         
         let inputEle= document.querySelectorAll('input')
         // added some styles  if card num entered
-        if(this.values.join("").length == 16){
+        if(this.values.join("").length >= 16){
                 this.flag=1;
                 console.log( document.querySelectorAll('input'))
                 inputEle.forEach(ele=>{
