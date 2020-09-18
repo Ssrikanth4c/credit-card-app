@@ -2,3 +2,17 @@
   text-align: center;
 }
 
+.boxContainer{
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  max-width: 300px; 
+}
+
+input{
+  margin:5px;
+  max-width: 20%;
+  padding: 10px 15px;
+  border: 2px solid black;
+  font-size:25px;
+}
