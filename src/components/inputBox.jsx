@@ -5,18 +5,40 @@ class InputBox extends React.Component{
         super(props);
         this.values= new Array(props.inputBoxCount).fill('');
         this.inputElements=[];
+        this.count=0
     }
     componentDidMount(){
         this.inputElements[0].focus();
         console.log(this.values)
-        console.log(this.props)
+        // console.log(this.props)
     }
-    componentDidUpdate(){
-        this.props.getCreditCardNum(this.values.join(' '))
-    }
+    
+    
     handleChange=(e, ind)=>{
-        console.log(e.target.value, ind);
         this.values[ind]= e.target.value;
+        this.props.getCreditCardNum(this.values.join("  "));
+        console.log(this.values.join("  ").length)
+        
+        if(this.inputElements[ind].value.length === 4 && ind!=3){
+            this.inputElements[ind+1].focus()
+        }
+        else{
+            let temp=e.target.value.substring(0,4)
+            if(e.target.value.length===4){
+                console.log(e.target.value+ '//')
+                temp=e.target.value;
+                // e.target.value=''
+            }
+            e.target.value=temp;
+        }
+
+    }
+    
+    handleDelete=(e, ind)=>{
+        console.log(e.target.value)
+        if(e.keyCode === 8 && ind>=1 && e.target.value=='' ){
+            this.inputElements[ind-1].focus()
+        }
     }
     render(){
         const {inputBoxCount}= this.props;
@@ -25,10 +47,11 @@ class InputBox extends React.Component{
             {  
                 this.values.map((item, ind)=>(
                     <input 
-                        type='text'
+                        type='tel'
                         key={ind}
                         ref={(n)=>this.inputElements[ind]=n}
                         onChange={(e)=>this.handleChange(e, ind)}
+                        onKeyDown={(e)=>this.handleDelete(e, ind)}
                     />
                 ))
             }
