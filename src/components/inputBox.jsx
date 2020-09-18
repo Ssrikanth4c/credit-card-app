@@ -5,7 +5,7 @@ class InputBox extends React.Component{
         super(props);
         this.values= new Array(props.inputBoxCount).fill('');
         this.inputElements=[];
-        this.count=0
+        this.flag=0
     }
     componentDidMount(){
         this.inputElements[0].focus();
@@ -17,20 +17,36 @@ class InputBox extends React.Component{
     handleChange=(e, ind)=>{
         this.values[ind]= e.target.value;
         this.props.getCreditCardNum(this.values.join("  "));
-        console.log(this.values.join("  ").length)
+        console.log(this.values.join("").length)
         
-        if(this.inputElements[ind].value.length === 4 && ind!=3){
+        let inputEle= document.querySelectorAll('input')
+        // added some styles  if card num entered
+        if(this.values.join("").length == 16){
+                this.flag=1;
+                console.log( document.querySelectorAll('input'))
+                inputEle.forEach(ele=>{
+                    ele.classList.add('changeBorderColor')
+                })
+        }
+        else{
+            inputEle.forEach(ele=>{
+                ele.classList.remove('changeBorderColor')
+            })
+        }
+        
+        if(this.inputElements[ind].value.length == 4 && ind!=3){
             this.inputElements[ind+1].focus()
         }
         else{
             let temp=e.target.value.substring(0,4)
-            if(e.target.value.length===4){
+            if(e.target.value.length == 4){
                 console.log(e.target.value+ '//')
                 temp=e.target.value;
                 // e.target.value=''
             }
             e.target.value=temp;
         }
+        // if()
 
     }
     

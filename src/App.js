@@ -15,14 +15,16 @@ class App extends React.Component {
       cardNo:value
     })
   }
+  
   render(){
+    const {cardNo}= this.state;
     return (
       <div className="App">
         <h1>Credit Card Number</h1>
         <div className='boxContainer'>
           <InputBox inputBoxCount={4} getCreditCardNum={this.getCreditCardNum}/>
         </div>
-        <h3>{this.state.cardNo}</h3>
+        <h2>{cardNo}</h2>
       </div>
     );
   }

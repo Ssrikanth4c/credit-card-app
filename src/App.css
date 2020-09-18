@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin-top: 20%;
 }
 
 .boxContainer{
@@ -15,4 +16,10 @@ input{
   padding: 10px 15px;
   border: 2px solid black;
   font-size:25px;
+  border-radius: 5px;
+}
+.changeBorderColor{
+  border:3px solid green;
+  background: rgb(219, 178, 184);
+
 }
