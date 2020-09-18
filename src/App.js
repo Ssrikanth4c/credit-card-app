@@ -24,7 +24,7 @@ class App extends React.Component {
         <div className='boxContainer'>
           <InputBox inputBoxCount={4} getCreditCardNum={this.getCreditCardNum}/>
         </div>
-        <h2>{cardNo}</h2>
+        {/* <h2>{cardNo}</h2> */}
       </div>
     );
   }
